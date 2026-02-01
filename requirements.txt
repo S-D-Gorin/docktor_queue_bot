@@ -3,3 +3,5 @@ uvicorn
 pydantic
 pyyaml
 httpx
+pytest
+pytest-asyncio

@@ -11,6 +11,7 @@ services:
     volumes:
       - ./config.yaml:/app/config.yaml:ro
       - ./src:/app/src   # hot-reload
+      - ./tests:/app/tests # hot-reload
 
     restart: unless-stopped
     healthcheck:
