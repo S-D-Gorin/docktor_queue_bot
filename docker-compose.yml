@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  spam-detector:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - LOG_LEVEL=INFO
+      - ASYNC_EXAMPLE_URL=http://example.com/api  # example of an async dependency
+      - ASYNC_EXAMPLE_API_KEY=example_key # example of an async dependency
+      - ASYNC_EXAMPLE_TIMEOUT=3 # example of an async dependency
+    volumes:
+      - ./config.yaml:/app/config.yaml:ro
+      - ./src:/app/src   # hot-reload
+
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+
+      
+
+    
+    
