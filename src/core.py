@@ -35,7 +35,6 @@ class TaskRunner:
                 tasks.append(
                     run_in_threadpool(
                         task_func,
-                        text=req.text,
                         params=params,
                     )
                 )
