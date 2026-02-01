@@ -2,26 +2,19 @@ from typing import List, Dict, Any, Optional
 from pydantic import BaseModel
 
 
-class CheckParams(BaseModel):
-    # общие параметры проверки
-    # например: sensitivity: float = 0.5
+class TaskParams(BaseModel):
     params: Dict[str, Any] = {}
 
 
-class SpamRequest(BaseModel):
-    text: str
-    checks: List[str]  # ["blacklist", "links", "caps"]
-    options: Optional[Dict[str, CheckParams]] = None
+class TaskRequest(BaseModel):
+    tasks: List[str]
+    options: Optional[Dict[str, TaskParams]] = None
 
-
-class CheckResult(BaseModel):
+class TaskResult(BaseModel):
     name: str
     passed: bool
-    score: float
     details: Dict[str, Any] = {}
 
 
-class SpamResponse(BaseModel):
-    is_spam: bool
-    score: float
-    results: List[CheckResult]
+class TaskResponse(BaseModel):
+    results: List[TaskResult]

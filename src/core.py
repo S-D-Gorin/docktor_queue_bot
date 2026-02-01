@@ -2,30 +2,30 @@ import asyncio
 from typing import List
 from fastapi.concurrency import run_in_threadpool
 
-from .schemas import SpamRequest, SpamResponse, CheckResult
-from .services.checks import AVAILABLE_CHECKS
+from .schemas import TaskRequest, TaskResponse, TaskResult
+from .services.checks import AVAILABLE_TASKS
 
 
-class SpamDetector:
+class TaskRunner:
     def __init__(self):
         pass
 
-    async def run(self, req: SpamRequest) -> SpamResponse:
+    async def run(self, req: TaskRequest) -> TaskResponse:
         tasks = []
 
-        for check_name in req.checks:
-            check_func = AVAILABLE_CHECKS.get(check_name)
-            if not check_func:
+        for task_name in req.tasks:
+            task_func = AVAILABLE_TASKS.get(task_name)
+            if not task_func:
                 continue
 
             params = {}
-            if req.options and check_name in req.options:
-                params = req.options[check_name].params
+            if req.options and task_name in req.options:
+                params = req.options[task_name].params
 
             # если функция асинхронная — ждём её напрямую
-            if asyncio.iscoroutinefunction(check_func):
+            if asyncio.iscoroutinefunction(task_func):
                 tasks.append(
-                    check_func(
+                    task_func(
                         text=req.text,
                         params=params,
                     )
@@ -34,23 +34,14 @@ class SpamDetector:
                 # синхронные проверки гоняем в threadpool, чтобы не блокировали event loop
                 tasks.append(
                     run_in_threadpool(
-                        check_func,
-                        req.text,
-                        params,
+                        task_func,
+                        text=req.text,
+                        params=params,
                     )
                 )
 
-        results: List[CheckResult] = await asyncio.gather(*tasks)
+        results: List[TaskResult] = await asyncio.gather(*tasks)
 
-        if results:
-            avg_score = sum(r.score for r in results) / len(results)
-        else:
-            avg_score = 0.0
-
-        is_spam = any(not r.passed for r in results)
-
-        return SpamResponse(
-            is_spam=is_spam,
-            score=avg_score,
+        return TaskResponse(
             results=results,
         )

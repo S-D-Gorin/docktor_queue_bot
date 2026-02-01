@@ -1,14 +1,14 @@
 from fastapi import APIRouter, Depends
-from .schemas import SpamRequest, SpamResponse
-from .core import SpamDetector
+from .schemas import TaskRequest, TaskResponse
+from .core import TaskRunner
 
 router = APIRouter()
 
 
-def get_detector() -> SpamDetector:
-    return SpamDetector()
+def get_task_runner() -> TaskRunner:
+    return TaskRunner()
 
 
-@router.post("/check", response_model=SpamResponse)
-async def check_spam(req: SpamRequest, detector: SpamDetector = Depends(get_detector)):
-    return await detector.run(req)
+@router.post("/task", response_model=TaskResponse)
+async def run_tasks(req: TaskRequest, task_runner: TaskRunner = Depends(get_task_runner)):
+    return await task_runner.run(req)
