@@ -90,6 +90,50 @@ Params:
 Environment variables:
 - `EXTERNAL_SERVICE_TIMEOUT` (seconds)
 
+## Custom tasks
+Add your task function to `src/services/tasks.py` and register it in `AVAILABLE_TASKS`.
+
+### Sync task example
+```python
+from typing import Dict, Any
+from ..schemas import TaskResult
+
+def my_sync_task(params: Dict[str, Any]) -> TaskResult:
+    value = params.get("value")
+    return TaskResult(
+        name="my_sync_task",
+        passed=value is not None,
+        details={"value": value},
+    )
+
+AVAILABLE_TASKS["my_sync_task"] = my_sync_task
+```
+
+### Async task example
+```python
+from typing import Dict, Any
+from ..schemas import TaskResult
+
+async def my_async_task(params: Dict[str, Any]) -> TaskResult:
+    return TaskResult(
+        name="my_async_task",
+        passed=True,
+        details={"info": "ok"},
+    )
+
+AVAILABLE_TASKS["my_async_task"] = my_async_task
+```
+
+### Call your task
+```json
+{
+  "tasks": ["my_sync_task"],
+  "options": {
+    "my_sync_task": {"params": {"value": 123}}
+  }
+}
+```
+
 ## Tests
 Run tests in the project root:
 ```bash
