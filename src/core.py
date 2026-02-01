@@ -3,7 +3,7 @@ from typing import List
 from fastapi.concurrency import run_in_threadpool
 
 from .schemas import TaskRequest, TaskResponse, TaskResult
-from .services.checks import AVAILABLE_TASKS
+from .services.tasks import AVAILABLE_TASKS
 
 
 class TaskRunner:
