@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Документ не обнаружен</title>
+    <style>
+        :root {
+            --primary: #2c7873;
+            --secondary: #6fb3b8;
+            --accent: #ff7e67;
+            --light: #f7f9f9;
+            --dark: #2d3436;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+        
+        body {
+            background-color: #f9f7f7;
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            background: white;
+            border-radius: 12px;
+            padding: 50px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e8e8e8;
+            text-align: center;
+            position: relative;
+        }
+        
+        .container::before {
+            content: "404";
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 120px;
+            color: rgba(44, 120, 115, 0.05);
+            font-weight: bold;
+            z-index: 0;
+        }
+        
+        .error-code {
+            font-size: 5em;
+            color: var(--primary);
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .error-title {
+            color: var(--secondary);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            font-weight: 400;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .diagnosis {
+            background: #f8fbfb;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border-left: 4px solid var(--accent);
+            text-align: left;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .diagnosis h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .etiology {
+            margin: 25px 0;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 6px;
+            font-size: 0.95em;
+            color: #666;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .etiology h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .suggestions {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 30px 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .suggestion {
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            text-align: left;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .suggestion:hover {
+            border-color: var(--secondary);
+            background: #f8fbfb;
+        }
+        
+        .suggestion h4 {
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .btn {
+            padding: 14px 32px;
+            background: white;
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 50px;
+            border: 2px solid var(--primary);
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #235f5b;
+        }
+        
+        .epilogue {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e8e8e8;
+            color: #888;
+            font-size: 0.9em;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .medical-term {
+            font-weight: bold;
+            color: var(--primary);
+            cursor: help;
+            position: relative;
+        }
+        
+        .medical-term::after {
+            content: "†";
+            font-size: 0.8em;
+            margin-left: 2px;
+            opacity: 0.6;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .error-code {
+                font-size: 4em;
+            }
+            
+            .actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="error-code">404</div>
+        <div class="error-title">Documentum Non Repertum</div>
+        
+        <div class="diagnosis">
+            <h3>Клиническое заключение</h3>
+            <p>Запрашиваемый медицинский документ не был обнаружен в системе. Данное состояние классифицируется как <span class="medical-term" title="Отсутствие документа при его ожидаемом наличии">Syndromum Documenti Absconditi</span> и, как правило, носит временный характер.</p>
+        </div>
+        
+        <div class="etiology">
+            <h4>Возможная этиология состояния:</h4>
+            <p>• <span class="medical-term" title="Самопроизвольное исчезновение электронных документов">Ambulatio Documenti Digitalis</span><br>
+               • Асинхронность в работе модулей электронной регистратуры<br>
+               • Непреднамеренная архивация документа пользователем<br>
+               • Временная десинхронизация с центральным реестром</p>
+        </div>
+        
+        <div class="suggestions">
+            <div class="suggestion">
+                <h4>Дифференциальная диагностика</h4>
+                <p>Рекомендуется исключить: опечатку в идентификаторе документа, использование устаревшей ссылки, отсутствие соответствующих прав доступа.</p>
+            </div>
+            
+            <div class="suggestion">
+                <h4>Профилактика рецидивов</h4>
+                <p>Сохраняйте копии важных документов локально. Используйте официальные каналы связи с медицинским учреждением для подтверждения статуса документов.</p>
+            </div>
+        </div>
+        
+        <div class="actions">
+            <a href="/" class="btn">Вернуться на главную</a>
+            <a href="https://t.me/docktor_queue_bot" class="btn btn-primary" target="_blank">Создать новый документ</a>
+        </div>
+        
+        <div class="epilogue">
+            <p><em>Примечание: В медицинской практике иногда встречаются случаи самопроизвольной ремиссии данного синдрома — документы могут появиться после обновления страницы или небольшой паузы для чашки чая.</em></p>
+            <p style="margin-top: 10px; font-size: 0.85em;">*Если симптомы сохраняются, обратитесь к системному администратору или загляните в папку «Входящие»</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  spam-detector:
+  task_runner:
     build: .
     ports:
       - "8000:8000"
@@ -20,6 +20,29 @@ services:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s
 
+  bot:
+    build:
+      context: ./bot
+      dockerfile: Dockerfile.bot
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+      - API_URL=${API_URL}
+    volumes:
+      - ./bot/bot.py:/app/bot.py:ro
+    restart: unless-stopped
+    depends_on:
+      - task_runner
+
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8081:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx/html:/var/www/html:ro
+      - ./app_files/media/:/var/www/media/:ro
+    restart: unless-stopped
       
 
     

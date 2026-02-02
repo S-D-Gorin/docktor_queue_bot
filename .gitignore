@@ -8,5 +8,5 @@ build/
 *.log
 .env
 config.yaml
-app_files/media/templates/*
+# app_files/media/templates/*
 app_files/media/output/*
