@@ -9,7 +9,7 @@ import datetime
 # Настройки
 # =========================
 BOT_TOKEN = os.getenv("BOT_TOKEN", "")
-API_URL = os.getenv("API_URL", "https://example.com/api/run")  # <-- замени на свой endpoint
+API_URL = os.getenv("API_URL", "http://task_runner:8000/api/task")  # <-- замени на свой endpoint
 API_TIMEOUT = 30
 
 bot = telebot.TeleBot(BOT_TOKEN, parse_mode=None)
@@ -27,7 +27,9 @@ START_TEXT = (
 
 INSTRUCTION_TEXT = (
     "Не получилось распознать сообщение 😕\n\n"
-    "Пожалуйста, отправь строго в таком формате:\n\n"
+    "Нажмите /template и я отправлю вам пример сообщения, а вы его отредактируете :\n\n"
+    
+    "Cообщение должно быть в следующем формате.\n\n"
     "Название поликлиники: Текст\n"
     "ФИО: Иванов Иван\n"
     "Дата и Время: 02/02/2026 12:34,\n"
@@ -35,6 +37,18 @@ INSTRUCTION_TEXT = (
     "ФИО врача: Алексеев Алексей\n"
 )
 
+TEMPLATE_TEXT = (
+    "Название поликлиники: Текст\n"
+    "ФИО: Иванов Иван\n"
+    "Дата и Время: 02/02/2026 12:34,\n"
+    "Специальность врача: Терапевт\n"
+    "ФИО врача: Алексеев Алексей\n"
+)
+
+HELP_TEXT = (
+    "Возникли проблемы?\n"
+    "Связаться с разработчиком: https://t.me/sprotect_bots"
+)
 # =========================
 # Парсинг и валидация
 # =========================
@@ -173,6 +187,14 @@ def send_ticket_image(chat_id: int, ticket_url: str):
 @bot.message_handler(commands=["start"])
 def handle_start(message):
     bot.send_message(message.chat.id, START_TEXT)
+
+@bot.message_handler(commands=["template"])
+def handle_template(message):
+    bot.send_message(message.chat.id, TEMPLATE_TEXT)
+
+@bot.message_handler(commands=["help"])
+def handle_help(message):
+    bot.send_message(message.chat.id, HELP_TEXT)
 
 @bot.message_handler(content_types=["text"])
 def handle_text(message):
