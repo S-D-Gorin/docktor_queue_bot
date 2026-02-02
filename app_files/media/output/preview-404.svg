@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#f8fbfb;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#e8f4f4;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+    
+    <rect width="1200" height="630" fill="url(#bg)"/>
+    
+    <!-- Декоративные крестики -->
+    <text x="150" y="150" font-family="Arial" font-size="80" fill="#ff7e67" opacity="0.3">❌</text>
+    <text x="1050" y="500" font-family="Arial" font-size="80" fill="#ff7e67" opacity="0.3">❌</text>
+    <text x="300" y="500" font-family="Arial" font-size="60" fill="#6fb3b8" opacity="0.3">📄</text>
+    
+    <!-- Основной блок -->
+    <rect x="150" y="100" width="900" height="430" rx="15" fill="white" stroke="#ff7e67" stroke-width="3"/>
+    
+    <!-- Код ошибки -->
+    <text x="600" y="220" font-family="Georgia, serif" font-size="120" text-anchor="middle" fill="#2c7873" font-weight="300">
+        404
+    </text>
+    
+    <!-- Латинский заголовок -->
+    <text x="600" y="300" font-family="Georgia, serif" font-size="36" text-anchor="middle" fill="#6fb3b8" font-style="italic">
+        Documentum Non Repertum
+    </text>
+    
+    <!-- Разделитель -->
+    <line x1="250" y1="340" x2="950" y2="340" stroke="#2c7873" stroke-width="2" stroke-dasharray="5,5"/>
+    
+    <!-- Описание -->
+    <text x="600" y="390" font-family="Georgia, serif" font-size="24" text-anchor="middle" fill="#2d3436">
+        Запрашиваемый медицинский документ не обнаружен
+    </text>
+    
+    <!-- Медицинские символы -->
+    <text x="350" y="480" font-family="Arial" font-size="50" text-anchor="middle" fill="#2c7873">⚕️</text>
+    <text x="600" y="480" font-family="Arial" font-size="50" text-anchor="middle" fill="#ff7e67">🔍</text>
+    <text x="850" y="480" font-family="Arial" font-size="50" text-anchor="middle" fill="#6fb3b8">📋</text>
+    
+    <!-- Диагноз -->
+    <text x="600" y="530" font-family="Monospace" font-size="16" text-anchor="middle" fill="#666">
+        Syndromum Documenti Absconditi
+    </text>
+</svg>
