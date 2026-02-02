@@ -8,6 +8,7 @@ services:
     environment:
       - LOG_LEVEL=INFO
       - EXTERNAL_SERVICE_TIMEOUT=3 # example of an async dependency
+      - SITE_URL=${SITE_URL} # example of an env variable
     volumes:
       - ./config.yaml:/app/config.yaml:ro
       - ./app_files:/app/app_files
