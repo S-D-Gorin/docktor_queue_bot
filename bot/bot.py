@@ -110,8 +110,8 @@ def build_payload(data: dict) -> dict:
                                     "font_size": 30
                         },
                         "ticket_number": {
-                                    "coords_x": 400,
-                                    "coords_y": 870,
+                                    "coords_x": 550,
+                                    "coords_y": 410,
                                     "font_size": 30
                         }
 
