@@ -4,7 +4,7 @@ services:
   task_runner:
     build: .
     ports:
-      - "8000:8000"
+      - "8083:8000"
     environment:
       - LOG_LEVEL=INFO
       - EXTERNAL_SERVICE_TIMEOUT=3 # example of an async dependency
