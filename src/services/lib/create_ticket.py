@@ -37,6 +37,12 @@ def create_ticket(data, template_config, template_path, output_path):
             "font_size": int(template_config["docktor_name"]["font_size"]),
             "color": (0, 0, 0),
             "max_width": 300
+        },
+        "ticket_number": {
+            "coords": (int(template_config["ticket_number"]["coords_x"]), int(template_config["ticket_number"]["coords_y"])),
+            "font_size": int(template_config["ticket_number"]["font_size"]),
+            "color": (0, 0, 0),
+            "max_width": 300
         }
     }
     
@@ -80,7 +86,7 @@ def create_ticket(data, template_config, template_path, output_path):
             draw.text((x, y), text, font=font, fill=config["color"])
     
     img.save(output_path)
-    return True
+    return output_path
 
 
 def main():
