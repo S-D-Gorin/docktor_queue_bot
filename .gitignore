@@ -9,4 +9,4 @@ build/
 .env
 config.yaml
 # app_files/media/templates/*
-app_files/media/output/*
+app_files/media/output/*.jpg
