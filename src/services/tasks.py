@@ -154,7 +154,14 @@ AVAILABLE_TASKS["async_example"] = async_external_service_example
 
 
 from .lib.create_ticket import create_ticket
-import datetime
+import random
+import string
+
+def generate_random_string(length):
+    characters = string.ascii_letters + string.digits
+    return ''.join(random.choice(characters) for _ in range(length))
+
+
 def create_docktor_ticket(params: Dict[str, Any]) -> TaskResult:
     data = params.get("data", False)
     template_config = params.get("template_config", {})
@@ -162,9 +169,7 @@ def create_docktor_ticket(params: Dict[str, Any]) -> TaskResult:
     # Создаем билет
     media_path = "/app/app_files/media"
     template_image_path = os.path.join(media_path, "templates", "template_docktor_ticket.jpg")
-    # output_file_name = f"docktor_ticket_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.jpg"
-    output_file_name = "docktor_ticket_test.jpg"
-
+    output_file_name = f"{generate_random_string(18)}.jpg"
     ticket = create_ticket(data, template_config, template_image_path, os.path.join(media_path, "output", output_file_name))
 
     if not ticket:
@@ -176,12 +181,14 @@ def create_docktor_ticket(params: Dict[str, Any]) -> TaskResult:
                 "data": data}
         )
     
+    url_path = ticket.replace("/app/app_files/media/output/", os.getenv("SITE_URL", "http://localhost:8000") + "/media/output/")
+    
 
     # Успешный результат
     details = {
         "status": "Docktor ticket task executed", 
         "data": data,
-        "Output ticket_path": ticket
+        "Output ticket_path": url_path
     }
 
     return TaskResult(
