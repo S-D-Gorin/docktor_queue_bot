@@ -48,7 +48,6 @@ TEMPLATE_TEXT = (
 HELP_TEXT = (
     "Возникли проблемы?\n\n"
     "О проекте: yatolkosprosit.sprotectbots.ru\n"
-    "Связаться с разработчиком: sdgor.apercode.com\n"
 )
 # =========================
 # Парсинг и валидация
