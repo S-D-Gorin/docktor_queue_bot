@@ -151,3 +151,43 @@ async def async_external_service_example(params: Dict[str, Any]) -> TaskResult:
         )
     
 AVAILABLE_TASKS["async_example"] = async_external_service_example
+
+
+from .lib.create_ticket import create_ticket
+import datetime
+def create_docktor_ticket(params: Dict[str, Any]) -> TaskResult:
+    data = params.get("data", False)
+    template_config = params.get("template_config", {})
+
+    # Создаем билет
+    media_path = "/app/app_files/media"
+    template_image_path = os.path.join(media_path, "templates", "template_docktor_ticket.jpg")
+    # output_file_name = f"docktor_ticket_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.jpg"
+    output_file_name = "docktor_ticket_test.jpg"
+
+    ticket = create_ticket(data, template_config, template_image_path, os.path.join(media_path, "output", output_file_name))
+
+    if not ticket:
+        return TaskResult(
+            name="docktor_ticket",
+            passed=False,
+            details={
+                "status": "Docktor ticket task failed", 
+                "data": data}
+        )
+    
+
+    # Успешный результат
+    details = {
+        "status": "Docktor ticket task executed", 
+        "data": data,
+        "Output ticket_path": ticket
+    }
+
+    return TaskResult(
+        name="docktor_ticket",
+        passed=True,
+        details=details,
+    )
+
+AVAILABLE_TASKS["create_docktor_ticket"] = create_docktor_ticket
