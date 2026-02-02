@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ФейкоТалон™ - Для тех, кто "просто спросить"</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 8px solid #4CAF50;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: "⚕️";
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 60px;
+            opacity: 0.1;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #ff4081;
+            font-size: 2.8em;
+            text-shadow: 3px 3px 0 #ffeb3b;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            color: #2196F3;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .doctor-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid #FF9800;
+            margin: 20px auto;
+            background: #fff3e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .content {
+            background: #e8f5e9;
+            padding: 25px;
+            border-radius: 15px;
+            border: 3px dashed #4CAF50;
+            margin: 25px 0;
+        }
+        
+        h2 {
+            color: #9C27B0;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .feature {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 10px;
+            flex: 1;
+            min-width: 200px;
+            border-left: 5px solid #2196F3;
+        }
+        
+        .feature h3 {
+            color: #2196F3;
+            margin-bottom: 8px;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            border: 3px solid #ffc107;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            color: #856404;
+        }
+        
+        .cta-button {
+            display: block;
+            width: 100%;
+            padding: 25px;
+            background: linear-gradient(45deg, #FF4081, #7B1FA2);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1.8em;
+            font-weight: bold;
+            border-radius: 50px;
+            margin: 30px 0;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(123, 31, 162, 0.4);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(123, 31, 162, 0.6);
+            background: linear-gradient(45deg, #7B1FA2, #FF4081);
+        }
+        
+        .cta-button::after {
+            content: "🚑";
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5em;
+        }
+        
+        .testimonial {
+            background: #f3e5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #9C27B0;
+            font-style: italic;
+        }
+        
+        .testimonial::before {
+            content: "💬 ";
+            font-size: 1.5em;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+            font-size: 0.9em;
+            border-top: 2px solid #eee;
+            padding-top: 20px;
+        }
+        
+        .emoji-list {
+            font-size: 1.5em;
+            margin: 15px 0;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .cta-button {
+                padding: 20px;
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>ФейкоТалон™</h1>
+            <div class="tagline">Генератор медицинских отмазок для тех, кто "ТОЛЬКО СПРОСИТЬ"</div>
+            <div class="doctor-img">👨‍⚕️</div>
+        </div>
+        
+        <div class="content">
+            <h2>Устали от косых взглядов регистратуры?</h2>
+            <p>Знакомо чувство, когда вы приходите в поликлинику "просто спросить", а вас встречают как предателя родины? 😱</p>
+            <p>Наш бот создаст вам убедительный фейковый талон, чтобы вы могли:</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <h3>👩‍⚕️ Пройти к врачу</h3>
+                    <p>С серьезным видом и "настоящим" талоном</p>
+                </div>
+                <div class="feature">
+                    <h3>⏱️ Сэкономить время</h3>
+                    <p>Не нужно стоять в живой очереди 3 часа</p>
+                </div>
+                <div class="feature">
+                    <h3>😎 Сохранить лицо</h3>
+                    <p>Вы же с талоном, а не "просто так"</p>
+                </div>
+            </div>
+            
+            <div class="emoji-list">
+                ✅ Выглядит как настоящий<br>
+                ✅ Есть QR-код (нерабочий)<br>
+                ✅ Печатается на принтере<br>
+                ✅ Вызовет уважение бабушек в очереди
+            </div>
+        </div>
+        
+        <div class="warning">
+            ⚠️ <strong>ВАЖНО:</strong> Это шуточный сервис! Наши талоны не дают права на реальный прием, 
+            не заменяют медицинскую помощь и могут вызвать смех у медицинского персонала. 
+            Не пытайтесь лечить аппендицит с нашим талоном! 🏥
+        </div>
+        
+        <div class="testimonial">
+            "Благодаря ФейкоТалону я наконец-то смог спросить про свою родинку! 
+            Правда, врач отправил меня к хирургу, но это уже детали!"
+            <br><span style="color: #666;">— Дмитрий, 34 года, "спрашивал" 15 раз</span>
+        </div>
+        
+        <a href="https://t.me/your_bot_username" class="cta-button" target="_blank">
+            🚨 СОЗДАТЬ ФЕЙКОВЫЙ ТАЛОН ПРЯМО СЕЙЧАС! 🚨
+        </a>
+        
+        <div class="testimonial">
+            "Пришел 'просто спросить' про давление, ушел с направлением на МРТ. 
+            Спасибо ФейкоТалону за расширенную диагностику!"
+            <br><span style="color: #666;">— Людмила Петровна, 67 лет</span>
+        </div>
+        
+        <div class="footer">
+            <p>© 2023 ФейкоТалон™. Все права защищены, особенно на право "просто спросить".</p>
+            <p>P.S. Если наш талон не сработал, скажите что вы из СЭС. Работает в 99% случаев! 🦠</p>
+        </div>
+    </div>
+</body>
+</html>
