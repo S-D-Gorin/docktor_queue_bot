@@ -104,22 +104,22 @@ def build_payload(data: dict) -> dict:
                                     "font_size": 36
                         },
                         "full_name": {
-                                    "coords_x": 400,
+                                    "coords_x": 380,
                                     "coords_y": 280,
-                                    "font_size": 38
+                                    "font_size": 36
                         },
                         "datetime": {
-                                    "coords_x": 400,
+                                    "coords_x": 380,
                                     "coords_y": 650,
                                     "font_size": 30
                         },
                         "docktor_type": {
-                                    "coords_x": 400,
+                                    "coords_x": 380,
                                     "coords_y": 750,
                                     "font_size": 30
                         },
                         "docktor_name": {
-                                    "coords_x": 400,
+                                    "coords_x": 380,
                                     "coords_y": 870,
                                     "font_size": 30
                         },
