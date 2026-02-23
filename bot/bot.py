@@ -48,6 +48,7 @@ TEMPLATE_TEXT = (
 HELP_TEXT = (
     "Возникли проблемы?\n\n"
     "О проекте: yatolkosprosit.sprotectbots.ru\n"
+    "Связаться с разработчиком: @sdgassistantbot"
 )
 # =========================
 # Парсинг и валидация
